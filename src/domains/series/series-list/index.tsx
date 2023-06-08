@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Box, Button, Text} from 'native-base';
 
 const Series = () => {
   return (
-    <View>
+    <Box>
       <Text>Hello World</Text>
-    </View>
+      <Button>Click me</Button>
+    </Box>
   );
 };
 
