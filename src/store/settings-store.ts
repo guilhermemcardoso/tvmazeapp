@@ -20,7 +20,7 @@ export const useSettingsStore = create<SettingsState>(set => ({
   setPinEnabled: async enabled => {
     set(state => ({
       ...state,
-      notificationEnabled: enabled,
+      pinEnabled: enabled,
     }));
   },
 }));
