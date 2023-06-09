@@ -3,5 +3,8 @@ export enum Routes {
 }
 
 export enum Tabs {
-  MAIN = 'MAIN',
+  SERIES = 'SERIES',
+  FAVORITES = 'FAVORITES',
+  PEOPLE = 'PEOPLE',
+  SETTINGS = 'SETTINGS',
 }
