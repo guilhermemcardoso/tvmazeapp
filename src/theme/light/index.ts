@@ -54,5 +54,41 @@ export const lightPalette = {
 };
 
 export const lightTheme = extendTheme({
+  fontConfig: {
+    Roboto: {
+      100: {
+        normal: 'Inter-Light',
+        italic: 'Inter-LightItalic',
+      },
+      200: {
+        normal: 'Inter-Light',
+        italic: 'Inter-LightItalic',
+      },
+      300: {
+        normal: 'Inter-Light',
+        italic: 'Inter-LightItalic',
+      },
+      400: {
+        normal: 'Inter-Regular',
+        italic: 'Inter-Italic',
+      },
+      500: {
+        normal: 'Inter-Medium',
+      },
+      600: {
+        normal: 'Inter-Medium',
+        italic: 'Inter-MediumItalic',
+      },
+      700: {
+        normal: 'Inter-Medium',
+        italic: 'Inter-MediumItalic',
+      },
+    },
+  },
+  fonts: {
+    heading: 'Inter',
+    body: 'Inter',
+    mono: 'Inter',
+  },
   colors: lightPalette,
 });
