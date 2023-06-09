@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Routes, Tabs} from './routes';
-import Series from '../domains/series/series-list';
+import Series from '~/domains/series/series-list';
 
 const screenOptions = {headerShown: false};
 const RootStack = createNativeStackNavigator();
