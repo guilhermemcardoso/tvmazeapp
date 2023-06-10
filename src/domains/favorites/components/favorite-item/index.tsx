@@ -37,7 +37,9 @@ export default function FavoriteItem({data, onDelete, onPress}: Props) {
         />
         <View style={styles.infoContainer}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>{data.name}</Text>
+            <Text size="subtitle" style={styles.title}>
+              {data.name}
+            </Text>
           </View>
           <View style={styles.titleContainer}>
             <Text>{`"${data.type}"`}</Text>
