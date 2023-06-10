@@ -2,17 +2,17 @@ export default interface Person {
   id: number;
   url: string;
   name: string;
-  country: {
-    name: string;
-    code: string;
-    timezone: string;
+  country?: {
+    name?: string;
+    code?: string;
+    timezone?: string;
   };
   birthday: string;
   deathday?: string;
   gender: string;
-  image: {
-    medium: string;
-    original: string;
+  image?: {
+    medium?: string;
+    original?: string;
   };
   updated: number;
   _links: {
