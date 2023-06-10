@@ -15,6 +15,10 @@ export default interface Serie {
     average: number;
   };
   weight: number;
+  schedule: {
+    time: string;
+    days: string[];
+  };
   network?: {
     id: number;
     name: string;

@@ -34,7 +34,7 @@ export const darkPalette = {
     primary: '#ffffff',
     secondary: '#A1ACB3',
     progress: '#2c2c2c',
-    label: '#737373',
+    label: '#ffffff',
   },
   loading: {
     background: 'rgba(0,0,0,0.75)',

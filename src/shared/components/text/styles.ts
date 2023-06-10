@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   title: {
@@ -17,16 +17,5 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'Inter',
     lineHeight: 18,
-  },
-  helper: {
-    fontSize: 12,
-    fontFamily: 'Inter',
-    lineHeight: 14,
-  },
-  label: {
-    fontSize: 14,
-    fontFamily: 'Inter',
-    lineHeight: 21,
-    fontWeight: '500',
   },
 });

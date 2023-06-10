@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   image: {
     borderTopLeftRadius: 8,
     borderBottomLeftRadius: 8,
+    resizeMode: 'contain',
   },
   infoContainer: {
     flex: 1,

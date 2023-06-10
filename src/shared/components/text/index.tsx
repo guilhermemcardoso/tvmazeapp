@@ -1,18 +1,11 @@
-import React, { useMemo } from 'react';
-import { Text as NativeText } from 'native-base';
-import { TextProps } from 'react-native';
-import { styles } from './styles';
+import React, {useMemo} from 'react';
+import {Text as NativeText} from 'native-base';
+import {TextProps} from 'react-native';
+import {styles} from './styles';
 
 type Props = TextProps & {
-  size?: 'title' | 'subtitle' | 'body' | 'helper' | 'label';
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'error'
-    | 'interactive'
-    | 'disabled'
-    | 'progress'
-    | 'label';
+  size?: 'title' | 'subtitle' | 'body';
+  variant?: 'primary' | 'secondary';
 };
 
 export default function Text({
