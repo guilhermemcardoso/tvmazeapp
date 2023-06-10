@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Header} from '~/shared/components';
+import {Container, Header, IconButton} from '~/shared/components';
 import styles from './styles';
 import {FlatList, View} from 'native-base';
 import {ListRenderItem} from 'react-native';
@@ -8,12 +8,17 @@ import {FavoriteItem} from '../components';
 import {useFavorites} from '~/hooks/use-favorites';
 import EmptyList from '~/shared/components/empty-list';
 import ListFooter from '~/shared/components/list-footer';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {AuthorizedStackParamList} from '~/navigation/stacks/authorized';
+import {Routes} from '~/navigation/routes';
 
-const Favorites = () => {
-  const {favorites, removeFromFavorites} = useFavorites();
+type Props = NativeStackScreenProps<AuthorizedStackParamList, Routes.HOME>;
+
+const Favorites = ({navigation}: Props) => {
+  const {favorites, sortFavorites, removeFromFavorites} = useFavorites();
 
   const onPressItem = (item: Serie) => {
-    console.log('onPressItem', item);
+    navigation.navigate(Routes.SERIE_DETAILS, {serie: item});
   };
 
   const onDeleteItem = (item: Serie) => {
@@ -26,9 +31,18 @@ const Favorites = () => {
     );
   };
 
+  const onSortPress = () => {
+    sortFavorites();
+  };
+
   return (
     <Container>
-      <Header title="Favorites" />
+      <Header
+        title="Favorites"
+        RightComponent={
+          <IconButton onPress={onSortPress} iconName="ios-filter-outline" />
+        }
+      />
       <View bgColor="container.light" style={styles.mainContainer}>
         <FlatList
           showsVerticalScrollIndicator={false}

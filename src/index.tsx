@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useLayoutEffect} from 'react';
 import {NativeBaseProvider, StatusBar} from 'native-base';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import Router from '~/navigation';
@@ -10,10 +10,13 @@ function App() {
   const {loadSettings} = useSettings();
   const {getFavorites} = useFavorites();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     loadSettings();
+  }, [loadSettings]);
+
+  useLayoutEffect(() => {
     getFavorites();
-  }, [loadSettings, getFavorites]);
+  }, [getFavorites]);
 
   return <Router />;
 }
