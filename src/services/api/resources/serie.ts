@@ -1,7 +1,6 @@
 import {Api} from '~/services/api';
 
 export async function getSeries(page = 0) {
-  console.log('ENTROU');
   return await Api({
     method: 'get',
     url: `/shows?page=${page}`,

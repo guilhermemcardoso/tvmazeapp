@@ -7,10 +7,17 @@ import {
   searchSeries as searchSeriesMutation,
 } from '~/services/api/resources/serie';
 
+interface SearchItem {
+  score: number;
+  show: Serie;
+}
 export function useSeries() {
   const setSeries = useSeriesStore(state => state.setSeries);
   const series = useSeriesStore(state => state.series);
+  const setFilteredSeries = useSeriesStore(state => state.setFilteredSeries);
+  const filteredSeries = useSeriesStore(state => state.filteredSeries);
   const [hasNext, setHasNext] = useState(true);
+  const [isSearch, setIsSearch] = useState(false);
 
   const {
     mutate: mutateGet,
@@ -47,7 +54,12 @@ export function useSeries() {
   );
 
   const searchSeries = (query: string) => {
-    mutateSearch(query);
+    if (query.length > 0) {
+      setIsSearch(true);
+      mutateSearch(query);
+    } else {
+      setIsSearch(false);
+    }
   };
 
   useEffect(() => {
@@ -68,17 +80,18 @@ export function useSeries() {
       return;
     }
 
-    const {response, status} = searchSeriesResponse;
-    setHasNext(status === 200 ? true : false);
+    const {response} = searchSeriesResponse;
 
     if (response) {
-      updateSeries(response);
+      setFilteredSeries(response.map((item: SearchItem) => item.show));
     }
-  }, [searchSeriesResponse, updateSeries]);
+  }, [searchSeriesResponse, setFilteredSeries]);
 
   return {
     isLoading,
+    isSearch,
     series,
+    filteredSeries,
     hasNext,
     getSeries,
     searchSeries,
