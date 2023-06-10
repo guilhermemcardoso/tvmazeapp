@@ -10,11 +10,6 @@ export function useFavorites() {
 
   const getFavorites = useCallback(async () => {
     const favoritesValue = await getKey(StorageKeys.FAVORITES);
-
-    console.log(
-      'CARREGOU OS FAVORITOES',
-      favoritesValue ? JSON.parse(favoritesValue) : [],
-    );
     setFavorites(favoritesValue ? JSON.parse(favoritesValue) : []);
   }, [setFavorites]);
 
