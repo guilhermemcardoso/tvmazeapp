@@ -1,5 +1,7 @@
 export enum Routes {
   HOME = 'HOME',
+  SERIE_DETAILS = 'SERIE_DETAILS',
+  EPISODE_DETAILS = 'EPISODE_DETAILS',
 }
 
 export enum Tabs {

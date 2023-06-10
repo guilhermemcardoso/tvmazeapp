@@ -9,8 +9,13 @@ import {useSeries} from '~/hooks/use-series';
 import {useFavorites} from '~/hooks/use-favorites';
 import EmptyList from '~/shared/components/empty-list';
 import ListFooter from '~/shared/components/list-footer';
+import {AuthorizedStackParamList} from '~/navigation/stacks/authorized';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {Routes} from '~/navigation/routes';
 
-const Series = () => {
+type Props = NativeStackScreenProps<AuthorizedStackParamList, Routes.HOME>;
+
+const Series = ({navigation}: Props) => {
   const {
     isLoading,
     isSearch,
@@ -39,7 +44,7 @@ const Series = () => {
   );
 
   const onPressItem = (item: Serie) => {
-    console.log('onPressItem', item);
+    navigation.navigate(Routes.SERIE_DETAILS, {serie: item});
   };
 
   const onFavoriteItem = (item: Serie) => {
