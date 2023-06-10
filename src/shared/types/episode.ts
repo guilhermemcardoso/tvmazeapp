@@ -12,9 +12,9 @@ export default interface Episode {
   rating: {
     average: number;
   };
-  image: {
-    medium: string;
-    original: string;
+  image?: {
+    medium?: string;
+    original?: string;
   };
   summary: string;
   _links: {

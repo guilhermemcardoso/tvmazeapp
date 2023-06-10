@@ -13,3 +13,10 @@ export async function searchSeries(query: string) {
     url: `/search/shows?q=${query}`,
   });
 }
+
+export async function getEpisodes(serieId: number) {
+  return await Api({
+    method: 'get',
+    url: `/shows/${serieId}/episodes`,
+  });
+}

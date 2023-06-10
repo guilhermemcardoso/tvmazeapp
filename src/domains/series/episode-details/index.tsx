@@ -13,7 +13,7 @@ type Props = NativeStackScreenProps<
 
 const EpisodeDetails = ({route, navigation}: Props) => {
   const {episode} = route.params;
-  console.log('EPISODIO SELECIONADA', episode);
+  console.log('EPISODE', episode);
 
   const onBackPress = () => {
     navigation.goBack();
