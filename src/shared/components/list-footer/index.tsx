@@ -8,6 +8,7 @@ interface Props {
   isLoading?: boolean;
   endOfList?: string;
   isEmpty?: boolean;
+  emptyFooter?: boolean;
   onLoadMore?: () => void;
 }
 
@@ -17,8 +18,13 @@ export default function ListFooter({
   isEmpty,
   endOfList = 'We reached the end of the list',
   onLoadMore,
+  emptyFooter = false,
 }: Props) {
   const theme = useTheme();
+
+  if (emptyFooter) {
+    return null;
+  }
 
   if (isLoading) {
     return <Loading />;
@@ -33,7 +39,14 @@ export default function ListFooter({
   }
 
   if (!isEmpty && onLoadMore) {
-    return <Button variant="unstyled" title="Load more" onPress={onLoadMore} />;
+    return (
+      <Button
+        style={styles.loadMoreButton}
+        variant="unstyled"
+        title="Load more"
+        onPress={onLoadMore}
+      />
+    );
   }
 
   return null;
