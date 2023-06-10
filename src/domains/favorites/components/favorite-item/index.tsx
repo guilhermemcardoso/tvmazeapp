@@ -9,21 +9,15 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props {
   data: Serie;
-  isFavorite: boolean;
   onPress: (item: Serie) => void;
-  onFavorite: (item: Serie) => void;
+  onDelete: (item: Serie) => void;
 }
 
-export default function SerieItem({
-  data,
-  isFavorite,
-  onFavorite,
-  onPress,
-}: Props) {
+export default function FavoriteItem({data, onDelete, onPress}: Props) {
   const theme = useTheme();
 
-  const onFavoritePress = () => {
-    onFavorite(data);
+  const onDeletePress = () => {
+    onDelete(data);
   };
 
   const onItemPress = () => {
@@ -60,22 +54,18 @@ export default function SerieItem({
             </View>
           </View>
           <View borderColor="divider.primary" style={styles.favoriteContainer}>
-            {isFavorite ? (
-              <Text variant="secondary" style={styles.addedToFavorites}>
-                Added to Favorites
+            <TouchableOpacity
+              onPress={onDeletePress}
+              style={styles.removeFromFavoritesContainer}>
+              <Icon
+                color={theme.colors.font.primary}
+                name={'ios-trash-outline'}
+                size={16}
+              />
+              <Text style={styles.removeFromFavorites}>
+                Remove from Favorites
               </Text>
-            ) : (
-              <TouchableOpacity
-                onPress={onFavoritePress}
-                style={styles.addToFavoritesContainer}>
-                <Icon
-                  color={theme.colors.font.primary}
-                  name={'ios-heart-outline'}
-                  size={16}
-                />
-                <Text style={styles.addToFavorites}>Add to Favorites</Text>
-              </TouchableOpacity>
-            )}
+            </TouchableOpacity>
           </View>
         </View>
       </View>

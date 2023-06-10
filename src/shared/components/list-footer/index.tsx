@@ -4,11 +4,11 @@ import {Button, Loading, Text} from '~/shared/components';
 import styles from './styles';
 
 interface Props {
-  hasNext: boolean;
-  isLoading: boolean;
+  hasNext?: boolean;
+  isLoading?: boolean;
   endOfList?: string;
-  isEmpty: boolean;
-  onLoadMore: () => void;
+  isEmpty?: boolean;
+  onLoadMore?: () => void;
 }
 
 export default function ListFooter({
@@ -24,7 +24,7 @@ export default function ListFooter({
     return <Loading />;
   }
 
-  if (!hasNext) {
+  if (!hasNext && onLoadMore) {
     return (
       <View bgColor={theme.colors.container.dark} style={styles.container}>
         <Text style={styles.description}>{endOfList}</Text>
@@ -32,7 +32,7 @@ export default function ListFooter({
     );
   }
 
-  if (!isEmpty) {
+  if (!isEmpty && onLoadMore) {
     return <Button variant="unstyled" title="Load more" onPress={onLoadMore} />;
   }
 

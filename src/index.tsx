@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     loadSettings();
-    getFavorites;
+    getFavorites();
   }, [loadSettings, getFavorites]);
 
   return <Router />;

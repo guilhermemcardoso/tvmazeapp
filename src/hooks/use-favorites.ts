@@ -11,6 +11,10 @@ export function useFavorites() {
   const getFavorites = useCallback(async () => {
     const favoritesValue = await getKey(StorageKeys.FAVORITES);
 
+    console.log(
+      'CARREGOU OS FAVORITOES',
+      favoritesValue ? JSON.parse(favoritesValue) : [],
+    );
     setFavorites(favoritesValue ? JSON.parse(favoritesValue) : []);
   }, [setFavorites]);
 
@@ -23,8 +27,18 @@ export function useFavorites() {
 
   const addToFavorites = useCallback(
     async (serie: Serie) => {
-      await setKey(StorageKeys.FAVORITES, JSON.stringify(serie));
-      setFavorites([...favorites, serie]);
+      const updatedFavorites = [...favorites, serie];
+      await setKey(StorageKeys.FAVORITES, JSON.stringify(updatedFavorites));
+      setFavorites(updatedFavorites);
+    },
+    [favorites, setFavorites],
+  );
+
+  const removeFromFavorites = useCallback(
+    async (serieId: number) => {
+      const updatedFavorites = favorites.filter(item => item.id !== serieId);
+      await setKey(StorageKeys.FAVORITES, JSON.stringify(updatedFavorites));
+      setFavorites(updatedFavorites);
     },
     [favorites, setFavorites],
   );
@@ -34,5 +48,6 @@ export function useFavorites() {
     getFavorites,
     isFavorite,
     addToFavorites,
+    removeFromFavorites,
   };
 }
