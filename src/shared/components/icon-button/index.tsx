@@ -1,7 +1,7 @@
-import { IconButton as NativeIconButton, useTheme } from 'native-base';
+import {IconButton as NativeIconButton, useTheme} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
-import { ViewProps } from 'react-native';
+import {ViewProps} from 'react-native';
 
 type Props = ViewProps & {
   onPress: () => void;

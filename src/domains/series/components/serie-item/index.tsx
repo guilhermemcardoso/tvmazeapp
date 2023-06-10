@@ -2,16 +2,24 @@ import React from 'react';
 import {Image, View, useTheme} from 'native-base';
 import {Serie} from '~/shared/types';
 import {TouchableOpacity} from 'react-native';
-import {IconButton, Text} from '~/shared/components';
+import {Text} from '~/shared/components';
 import styles from './styles';
+import {getYearFromDate} from '~/shared/utils/dates';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props {
   data: Serie;
+  isFavorite: boolean;
   onPress: (item: Serie) => void;
   onFavorite: (item: Serie) => void;
 }
 
-export default function SerieItem({data, onFavorite, onPress}: Props) {
+export default function SerieItem({
+  data,
+  isFavorite,
+  onFavorite,
+  onPress,
+}: Props) {
   const theme = useTheme();
 
   const onFavoritePress = () => {
@@ -34,10 +42,34 @@ export default function SerieItem({data, onFavorite, onPress}: Props) {
           size="xl"
         />
         <View style={styles.infoContainer}>
-          <Text style={styles.title}>{data.name}</Text>
-          <Text>{data.premiered}</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>{data.name}</Text>
+          </View>
+          <View style={styles.titleContainer}>
+            <Text>{`"${data.type}"`}</Text>
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text>{getYearFromDate(data.premiered)}</Text>
+            <View style={styles.ratingContainer}>
+              <Icon name={'ios-star'} size={16} />
+              <Text style={styles.rating}>{data.rating.average}</Text>
+            </View>
+          </View>
+          <View borderColor="divider.primary" style={styles.favoriteContainer}>
+            {isFavorite ? (
+              <Text variant="secondary" style={styles.addedToFavorites}>
+                Added to Favorites
+              </Text>
+            ) : (
+              <TouchableOpacity
+                onPress={onFavoritePress}
+                style={styles.addToFavoritesContainer}>
+                <Icon name={'ios-heart-outline'} size={16} />
+                <Text style={styles.addToFavorites}>Add to Favorites</Text>
+              </TouchableOpacity>
+            )}
+          </View>
         </View>
-        <IconButton size={20} iconName="ios-heart" onPress={onFavoritePress} />
       </View>
     </TouchableOpacity>
   );

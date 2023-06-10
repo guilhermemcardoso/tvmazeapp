@@ -4,11 +4,15 @@ import styles from './styles';
 import {FlatList, View} from 'native-base';
 import {ListRenderItem} from 'react-native';
 import {Serie} from '~/shared/types';
-import {EmptyList, ListFooter, SerieItem} from '../components';
+import {SerieItem} from '../components';
 import {useSeries} from '~/hooks/use-series';
+import {useFavorites} from '~/hooks/use-favorites';
+import EmptyList from '~/shared/components/empty-list';
+import ListFooter from '~/shared/components/list-footer';
 
 const Series = () => {
   const {isLoading, getSeries, series, hasNext} = useSeries();
+  const {isFavorite, addToFavorites} = useFavorites();
   const [currentPage, setCurrentPage] = useState(0);
 
   const onLoadMoreSeries = () => {
@@ -16,7 +20,6 @@ const Series = () => {
   };
 
   const callGetSeries = useCallback(() => {
-    console.log('ENTROU NO CALLBACK');
     getSeries(currentPage);
   }, [getSeries, currentPage]);
 
@@ -25,14 +28,16 @@ const Series = () => {
   };
 
   const onFavoriteItem = (item: Serie) => {
-    console.log('ITEM', item);
+    addToFavorites(item);
   };
 
   const onRenderItem: ListRenderItem<Serie> = ({item}: {item: Serie}) => {
+    const itemIsFavorite = isFavorite(item.id);
     return (
       <SerieItem
         onPress={onPressItem}
         data={item}
+        isFavorite={itemIsFavorite}
         onFavorite={onFavoriteItem}
       />
     );

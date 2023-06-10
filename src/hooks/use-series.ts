@@ -34,7 +34,6 @@ export function useSeries() {
 
   const updateSeries = useCallback(
     (newItems: Serie[]) => {
-      console.log('AQUI VEIO DENOVO', newItems.length);
       return setSeries([...newItems]);
     },
     [setSeries],
