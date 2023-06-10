@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    height: 204,
+    flex: 1,
     marginHorizontal: 16,
   },
   itemContainer: {
@@ -11,9 +11,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   itemName: {
-    padding: 4,
+    padding: 6,
     flex: 1,
     flexWrap: 'wrap',
+    height: 48,
   },
   title: {
     fontWeight: 'bold',
@@ -22,8 +23,6 @@ const styles = StyleSheet.create({
   imageContainer: {
     height: 128,
     width: 128,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
   },
   image: {
     borderTopLeftRadius: 8,

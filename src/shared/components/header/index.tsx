@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { SafeAreaView, ViewProps } from 'react-native';
+import React, {ReactNode} from 'react';
+import {SafeAreaView, ViewProps} from 'react-native';
 import Text from '~/shared/components/text';
 import styles from './styles';
 
@@ -18,7 +18,7 @@ export default function Header({
   return (
     <SafeAreaView style={styles.container} {...rest}>
       {LeftComponent}
-      <Text style={styles.title} size="title">
+      <Text numberOfLines={1} style={styles.title} size="title">
         {title}
       </Text>
       {RightComponent}
